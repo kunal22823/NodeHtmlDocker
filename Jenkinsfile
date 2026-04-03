@@ -17,8 +17,8 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                bat 'docker stop my-container || true'
-                bat 'docker rm my-container || true'
+                bat 'docker stop my-container || exit 0'
+                bat 'docker rm my-container || exit 0'
                 bat 'docker run -d -p 8070:3000 --name my-container my-node-app'
             }
         }
