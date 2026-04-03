@@ -11,15 +11,15 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t my-node-app .'
+                bat 'docker build -t my-node-app .'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker stop my-container || true'
-                sh 'docker rm my-container || true'
-                sh 'docker run -d -p 8070:3000 --name my-container my-node-app'
+                bat 'docker stop my-container || true'
+                bat 'docker rm my-container || true'
+                bat 'docker run -d -p 8070:3000 --name my-container my-node-app'
             }
         }
     }
